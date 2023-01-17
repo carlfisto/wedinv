@@ -2,7 +2,7 @@ import { Copy, EmojiLookLeft, EmojiLookRight, PinAlt } from "iconoir-react";
 import Image from "next/image";
 import Link from "next/link";
 import React, {
-  MouseEventHandler,
+  MouseEventHandler, 
   useCallback,
   useEffect,
   useRef,
@@ -24,9 +24,10 @@ import {
   BubbleHeadStyle,
   Main,
   SectionHeader,
+  SectionHeaderA,
   SectionHr,
   TextSansStyle,
-} from "./styles";
+} from "./styles"; 
 import WriteTalk from "./talk/WriteTalk";
 import EditTalk from "./talk/EditTalk";
 import QuickPinchZoom, { make3dTransformValue } from "react-quick-pinch-zoom";
@@ -142,6 +143,7 @@ const PhotoGrid = styled.ul`
     max-height: 100%;
     min-width: 100%;
     object-fit: cover;
+    object-position: center 20%;
     vertical-align: bottom;
   }
 `;
@@ -250,6 +252,17 @@ const GiveWrap = styled.div`
   display: inline-block;
   text-align: left;
   line-height: 2;
+`;
+
+const MapWrapA = styled.div`
+  margin: 0 0 0 10px;
+  text-align: left;
+`;
+
+const MapWrapB = styled.div`
+  margin: 0 0 0 10px;
+  text-align: left;
+  font-size: 12px;
 `;
 
 const CopyTextButton = styled.button`
@@ -458,11 +471,12 @@ const TalkBubble = ({
         {selected && talk.party === "GROOM" && <> {editBtn}</>}
         <div className="bubble-info-wrap">
           <p onClick={handleBubbleClick}>{talk.msg}</p>
-          <small>
+           <small>
             {!talk.published
               ? "검수중"
-              : timeDiffFormat(new Date(talk.created))}
-          </small>
+              : timeDiffFormat(new Date(talk.created)) 
+            }
+          </small> 
         </div>
       </div>
     </TalkBubbleWrap>
@@ -538,50 +552,57 @@ const Home = () => {
   return (
     <Main>
       <Header>
-        이종찬
+        최태준
         <hr />
-        이현경
+        이슬이
       </Header>
       <CoverPicWrap>
         <Image src={coverPic} priority={true} placeholder="blur" alt="" />
       </CoverPicWrap>
-      <p>
-        2022년 4월 9일 토요일 오후 5시
+      
+      <SectionHeaderA>
+        2023년 2월 12일 일요일 오후 6시
         <br />
-        반포 JW 메리어트 호텔 5층 그랜드볼룸
-      </p>
+        서울신라호텔 다이너스티홀
+      </SectionHeaderA> 
       
       <SectionHr />
 
-      <SectionHeader>결혼합니다.</SectionHeader>
+      <SectionHeader>결혼합니다♡</SectionHeader> 
+      
       <GreetingP>
-        저희 두 사람, 부부의 연을 맺게 되었습니다.
+        만날 때의 설렘보다
         <br />
-        앞으로도 서로 아껴주고 이해하며,
+        집 앞에서 헤어질 때의 아쉬움이 커질 무렵
         <br />
-        서로 사랑하며 살도록 하겠습니다.
+        새로운 설렘으로 시작하려 합니다.
         <br />
-        저희 두 사람의 앞날을 축복해 주시면
+        아름다운 시작을 위해 가까이에서 축복해 주시면
         <br />
-        더없는 기쁨으로 간직하겠습니다.
+        변함없는 믿음과 사랑으로
+        <br />
+        하루하루 감동하며 살겠습니다.
+         <br />
       </GreetingP>
+      
       <GreetingP>
-        이용규 · 박정애의 장남 이종찬
+        최갑현 · 이영희의 장남 태준
         <br />
-        노주희의 장녀 이현경
+        이희봉 · 김재락의 장녀 슬이
       </GreetingP>
+      
       <CallWrap>
-        <a href="tel:01035637782">
+        <a href="tel:01093310848">
           <CallButton
             icon={<EmojiLookRight />}
             bgColor="#abdaab"
             label="신랑측에 연락하기"
           />
         </a>
-        <a href="tel:01046165728">
+        <a href="tel:01028205242">
           <CallButton
             icon={<EmojiLookLeft />}
-            bgColor="#c2e0a3"
+            bgColor="#F7C8D3"
             label="신부측에 연락하기"
           />
         </a>
@@ -611,32 +632,89 @@ const Home = () => {
       )}
       <SectionHr />
       <SectionHeader>오시는 길</SectionHeader>
-      <Image src={mapPic} width="400px" alt="" />
+      <Image src={mapPic} width="650px" alt="" />
       <p>
-        서울 서초구 신반포로 176
+        서울 중구 동호로 249
         <br />
-        반포 JW 메리어트 호텔 5층 그랜드볼룸
+        서울신라호텔 다이너스티홀
+        <br />
       </p>
-      <MapButton href="https://place.map.kakao.com/8005133">
+   
+ 
+      
+      <MapWrapA>
+      <br/>자가용 이용시<br/>
+                    
+      <MapWrapB> 
+        <div>
+          분당 방면: 한남대교→장충단길→서울신라호텔 <br /> 
+          강남 방면: 동호대교→장충체육관 앞 사거리에서 좌회전→서울신라호텔 <br /> 
+          용산 방면: 남산2호터널 통과 후 좌회전→서울신라호텔 <br />
+       </div>
+      </MapWrapB>
+     
+         <br/>버스 이용시<br/>
+      
+      <MapWrapB> 
+       <div>
+         장충체육관 앞 하차 (노선번호:144, 301, 7212) <br />
+       </div>
+      </MapWrapB>
+      
+         <br/>지하철 이용시<br/>
+        
+      <MapWrapB> 
+         <div>
+          지하철3호선 동대입구역 5번출구 <br />
+         </div> 
+      </MapWrapB>
+      
+         <br/>서울신라호텔 셔틀버스 이용시 <br/>
+        
+      <MapWrapB> 
+         <div>
+          관내 셔틀: 호텔 로비→신라 면세점→호텔 고객 주차장→ 호텔 정문 <br />
+         </div>
+      </MapWrapB>      
+      </MapWrapA> 
+      
+      <br />
+      
+      <MapButton href="https://place.map.kakao.com/10527133">
         <PinAlt color="#1199EE" /> 카카오맵
       </MapButton>
-      <MapButton href="https://map.naver.com/v5/entry/place/11583195">
+      <MapButton href="https://map.naver.com/v5/entry/place/12159697">
         <PinAlt color="#66BB66" /> 네이버지도
       </MapButton>
+      
+      <br />
+      <br />
+      
       <SectionHr />
       <SectionHeader>💸 마음 전하실 곳</SectionHeader>
       <GiveWrap>
         <p>
-          <strong>신랑측</strong> (이종찬)
+          <strong>신랑측</strong> (최태준)
           <br />
-          <CopyText text="우리은행 1002-743-204058" />
+          <MapWrapA>
+            <div> 
+              父 최갑현 <CopyText text="농협 821027-52-095666" /> <br /> 
+              母 이영희 <CopyText text="농협 858-02-072598" />
+            </div>
+          </MapWrapA>
         </p>
         <p>
-          <strong>신부측</strong> (이현경)
+          <strong>신부측</strong> (이슬이)
           <br />
-          <CopyText text="신한은행 110-502-203145" />
+          <MapWrapA>
+            <div> 
+              父 이희봉 <CopyText text="농협 477-12-045826" /> <br /> 
+              母 김재락 <CopyText text="국민은행 474101-04-045737" />
+            </div>
+          </MapWrapA>
         </p>
       </GiveWrap>
+      
       <SectionHr />
       <SectionHeader>축하의 한마디</SectionHeader>
       <WriteSectionSubHeader>
